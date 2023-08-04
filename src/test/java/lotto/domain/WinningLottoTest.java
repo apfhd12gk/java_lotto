@@ -26,4 +26,13 @@ public class WinningLottoTest {
         assertThatThrownBy(()->new WinningLotto(lotto,bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @Test
+    @DisplayName("git test")
+    void createWinningLottoDuplicateBonusNumber2(){
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        int bonusNumber = 4;
+
+        assertThatThrownBy(()->new WinningLotto(lotto,bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
