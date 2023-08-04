@@ -2,7 +2,6 @@ package lotto.domain;
 
 import java.util.List;
 
-
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
     private static final String ERROR_MESSAGE_FOR_INVALID_SIZE_OF_LOTTO_NUMBER ="[ERROR] %d개의 숫자를 골라 주세요.";
@@ -35,7 +34,7 @@ public class Lotto {
         return (int) lottoNumbers.stream()
                 .filter(anotherLotto::containsLottoNumber).count();
     }
-    private boolean containsLottoNumber(int lottoNumber){
+    public boolean containsLottoNumber(int lottoNumber){
         return lottoNumbers.contains(lottoNumber);
     }
 }
