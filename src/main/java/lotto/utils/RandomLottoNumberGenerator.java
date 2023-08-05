@@ -1,4 +1,4 @@
 package lotto.utils;
 
-public class LottoNumberGenerator {
+public class RandomLottoNumberGenerator {
 }
