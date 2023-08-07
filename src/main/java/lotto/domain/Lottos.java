@@ -14,5 +14,8 @@ public class Lottos {
             throw new IllegalArgumentException("Lotto 목록이 비어 있습니다.");
         }
     }
+    public List<Lotto> getLottos(){
+        return lottos;
+    }
 
 }

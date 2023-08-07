@@ -1,5 +1,8 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
+import lotto.domain.Lottos;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -50,5 +53,16 @@ public class InputView {
     public static int scanBonusNumber(){
         System.out.println(MESSAGE_FOR_BONUS_LOTTO_NUMBER);
         return Integer.parseInt(SCANNER.nextLine());
+    }
+    public static void printLottos(Lottos lottos){
+        lottos.getLottos()
+                .forEach(InputView::printSingleLotto);
+    }
+    public static void printSingleLotto(Lotto lotto){
+        String joinedLottoNumbers = lotto.getLottoNumbers()
+                .stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(SPLIT_DELIMITER));
+        System.out.println("["+joinedLottoNumbers+"]");
     }
 }

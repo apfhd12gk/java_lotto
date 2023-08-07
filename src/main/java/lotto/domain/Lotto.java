@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import lotto.constants.LottoNumbers;
+
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -11,7 +14,7 @@ public class Lotto {
     public Lotto(List<Integer> lottoNumbers) {
         validateSize(lottoNumbers);
         validateDuplicate(lottoNumbers);
-        this.lottoNumbers = lottoNumbers;
+        this.lottoNumbers = Collections.unmodifiableList(lottoNumbers);
     }
 
     private void validateSize(List<Integer> numbers) {
@@ -36,5 +39,8 @@ public class Lotto {
     }
     public boolean containsLottoNumber(int lottoNumber){
         return lottoNumbers.contains(lottoNumber);
+    }
+    public List<Integer> getLottoNumbers(){
+        return lottoNumbers;
     }
 }
