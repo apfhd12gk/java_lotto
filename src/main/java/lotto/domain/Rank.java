@@ -26,4 +26,7 @@ public enum Rank {
     public boolean isSameNumberCount(int count){
         return sameNumberCount == count;
     }
+    public long getPrize(){
+        return prize;
+    }
 }
