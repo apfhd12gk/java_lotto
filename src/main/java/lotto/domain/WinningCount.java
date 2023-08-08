@@ -5,7 +5,7 @@ import java.util.Objects;
 public class WinningCount {
     private final int count;
 
-    public int getCount(int count){
+    public int getCount(){
         return count;
     }
     public WinningCount(int count){
