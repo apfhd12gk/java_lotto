@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class LottoResultDTO {
+    public static final double ROUND_UNIT = 100.0;
+    public static final double SINGLE_LOTTO_PRICE = 1000.0;
     private final Map<Rank,WinningCount> lottoWinningResult;
     private final double profitRatio;
     private LottoResultDTO(Map<Rank,WinningCount> lottoWinningResult, double profitRatio ){
@@ -22,7 +24,11 @@ public class LottoResultDTO {
         return new LottoResultDTO(lottoWinningResult,getProfitRatio(totalPrize,lottoQuantity));
     }
     private static double getProfitRatio(long totalPrize, LottoQuantity lottoQuantity){
-        return Math.round(totalPrize / (lottoQuantity.getLottoQuantity()*1000.0)*100) / 100.0;
+        double purchaseMoney = (lottoQuantity.getLottoQuantity() * SINGLE_LOTTO_PRICE);
+        return  roundToSecondDigit(totalPrize/purchaseMoney);
+    }
+    private static double roundToSecondDigit(double number){
+        return Math.round(number * ROUND_UNIT)/ROUND_UNIT;
     }
     public WinningCount getWinningCountByRank(Rank rank){
         return lottoWinningResult.get(rank);
