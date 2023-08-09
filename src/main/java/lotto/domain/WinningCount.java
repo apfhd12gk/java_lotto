@@ -3,15 +3,22 @@ package lotto.domain;
 import java.util.Objects;
 
 public class WinningCount {
+    private final int POSITIVE_CRITERIA = 0;
+    private final String ERROR_MESSAGE_FOR_NEGATIVE_OR_ZERO_NUMBER = "당첨 횟수는 0이상 이어야 합니다.";
     private final int count;
 
     public int getCount(){
         return count;
     }
     public WinningCount(int count){
+        validNotNegative(count);
         this.count=count;
     }
-
+    private void validNotNegative(int count){
+        if(count< POSITIVE_CRITERIA){
+            throw new IllegalArgumentException(ERROR_MESSAGE_FOR_NEGATIVE_OR_ZERO_NUMBER);
+        }
+    }
     @Override
     public boolean equals(Object object){
         if(this == object){
