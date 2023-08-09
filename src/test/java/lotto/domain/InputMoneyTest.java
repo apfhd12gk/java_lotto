@@ -16,10 +16,18 @@ class InputMoneyTest {
         assertThat(inputMoney.getMoney()).isEqualTo(money);
     }
 
-    @ParameterizedTest(name="{0}원 입력 시, IAE 발생")
-    @ValueSource(ints={999,-1,0,1111})
-    void createInputMoneyWithInvalidMoney(int money){
+    @ParameterizedTest(name="1000원보다 작은 금액 전달 시 IAE 발생 - {0}")
+    @ValueSource(ints = {-1000,0,1,999})
+    void createInputMoneySmallerThan1000(int money){
         assertThatThrownBy(()->new InputMoney(money))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageMatching("1000원 보다 작은 금액을 입력할 수 없습니다.");
+    }
+    @ParameterizedTest(name="1000원으로 나누어 떨어지지 않는 금액 전달 시 IAE 발생 - {0}")
+    @ValueSource(ints = {1500,2100,3333})
+    void createInputMoneyWithNotMultipleOf1000(int money){
+        assertThatThrownBy(()->new InputMoney(money))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageMatching("1000원으로 나누어 떨어지지 않는 금액을 입력할 수 없습니다.");
     }
 }
