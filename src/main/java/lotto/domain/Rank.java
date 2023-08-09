@@ -29,4 +29,7 @@ public enum Rank {
     public long getPrize(){
         return prize;
     }
+    public int getSameNumberCount(){
+        return sameNumberCount;
+    }
 }

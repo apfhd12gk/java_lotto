@@ -4,6 +4,7 @@ import lotto.domain.LottoQuantity;
 import lotto.domain.Rank;
 import lotto.domain.WinningCount;
 
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -32,6 +33,11 @@ public class LottoResultDTO {
     }
     public WinningCount getWinningCountByRank(Rank rank){
         return lottoWinningResult.get(rank);
+    }
+    public Map<Rank, WinningCount> getRanks(){
+        Map<Rank,WinningCount> ranks = new EnumMap<>(this.lottoWinningResult);
+        ranks.remove(Rank.NO_MATCH);
+        return ranks;
     }
     public double getProfitRatio(){
         return profitRatio;
