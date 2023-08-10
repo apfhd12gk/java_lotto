@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.constants.LottoNumbers;
-
 import java.util.Collections;
 import java.util.List;
 
