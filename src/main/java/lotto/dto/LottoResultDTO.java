@@ -6,7 +6,6 @@ import lotto.domain.WinningCount;
 
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class LottoResultDTO {
     public static final double ROUND_UNIT = 100.0;
@@ -42,25 +41,6 @@ public class LottoResultDTO {
     public double getProfitRatio(){
         return profitRatio;
     }
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) {
-            return true;
-        }
-        if (object == null || getClass() != object.getClass()) {
-            return false;
-        }
-        LottoResultDTO that = (LottoResultDTO) object;
-        return Double.compare(that.profitRatio, profitRatio) == 0 && Objects.equals(lottoWinningResult,
-                that.lottoWinningResult);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(lottoWinningResult, profitRatio);
-    }
-
-
     @Override
     public String toString() {
         return "LottoResultDto{" +
