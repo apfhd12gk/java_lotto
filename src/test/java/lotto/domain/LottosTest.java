@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 //import org.junit.jupiter.params.ParameterizedTest;
@@ -9,34 +8,21 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
 
 import static org.assertj.core.api.Assertions.*;
 
 public class LottosTest {
-    private List<Lotto> lottos = new ArrayList<>();
-    @BeforeEach
-    void setupLottos(){
-        Lotto lotto1 = new Lotto(Set.of(1,2,3,4,5,6));
-        Lotto lotto2 = new Lotto(Set.of(1,3,4,5,6,7));
-        Lotto lotto3 = new Lotto(Set.of(3,4,5,6,7,9));
-
-        lottos = List.of(lotto1, lotto2, lotto3);
-    }
+    private final List<Lotto> lottos = new ArrayList<>();
 
     @Test
-    @DisplayName("List<Lotto> 를 전달받아 Lottos 생성")
+    @DisplayName("LottoQuantity 와 RandomLottoNumberGenerate 를 전달받아 Lottos 생성")
     void createLottos(){
-        Lottos validLottos = new Lottos(lottos);
+        LottoQuantity lottoQuantity = new LottoQuantity(2);
+        RandomLottoNumbersGenerate randomLottoNumbersGenerate = new RandomLottoNumbersGenerate();
 
-        assertThat(validLottos).isNotNull();
+        Lottos createLottos = new Lottos(lottoQuantity,randomLottoNumbersGenerate);
+
+        assertThat(createLottos).isNotNull();
     }
-
-//    @ParameterizedTest(name="Lottos 생성자에 null값이 전달된 경우")
-//    @NullSource
-//    void createLottosWithNullAndEmptyShouldFail(List<Lotto> lottos){
-//        assertThatThrownBy(()->new Lottos(lottos))
-//                .isInstanceOf(IllegalArgumentException.class);
-//    }
-
 }
