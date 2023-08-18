@@ -13,14 +13,10 @@ public class LottoDTO {
         lottoNumbers = sortLottoNumbers(getLottoNumbersByLotto(lotto));
     }
     private List<Integer> getLottoNumbersByLotto(Lotto lotto){
-        List<Integer> lottoNumbers = new ArrayList<>();
-        for(Integer lottoNumber : lotto.getLottoNumbers()){
-            lottoNumbers.add(lottoNumber);
-        }
-        return lottoNumbers;
+        return new ArrayList<>(lotto.getLottoNumbers());
     }
     private List<Integer> sortLottoNumbers(List<Integer> lottoNumbers){
-        List<Integer> copiedLottoNumbers = new ArrayList<>();
+        List<Integer> copiedLottoNumbers = new ArrayList<>(lottoNumbers);
         Collections.sort(copiedLottoNumbers);
 
         return copiedLottoNumbers;

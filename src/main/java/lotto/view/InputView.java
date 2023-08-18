@@ -1,7 +1,6 @@
 package lotto.view;
 
-import lotto.domain.Lotto;
-import lotto.domain.Lottos;
+import lotto.dto.LottoDTO;
 
 import java.util.Arrays;
 import java.util.List;
@@ -59,15 +58,17 @@ public class InputView {
             throw new IllegalArgumentException(MESSAGE_FOR_INVALID_NUMBER);
         }
     }
-    public static void printLottos(Lottos lottos){
-        lottos.getLottos()
-                .forEach(InputView::printSingleLotto);
+    public static void printLottos(List<LottoDTO> lottoDTOs){
+        for(LottoDTO lottoDTO :lottoDTOs){
+            printSingleLotto(lottoDTO);
+        }
     }
-    public static void printSingleLotto(Lotto lotto){
-        String joinedLottoNumbers = lotto.getLottoNumbers()
-                .stream()
+    public static void printSingleLotto(LottoDTO lottoDTO){
+        System.out.println("["+joinNumbers(lottoDTO.getLottoNumbers()));
+    }
+    private static String joinNumbers(List<Integer> numbers){
+        return numbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(SPLIT_DELIMITER));
-        System.out.println("["+joinedLottoNumbers+"]");
     }
 }
