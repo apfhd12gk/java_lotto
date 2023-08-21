@@ -1,6 +1,5 @@
 package lotto.view;
 
-import lotto.dto.LottoDTO;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,11 +10,10 @@ public class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
     public static final String MESSAGE_FOR_INVALID_NUMBER ="숫자만 입력해 주세요.";
     private static final String MESSAGE_TO_GET_INPUT_MONEY = "구입금액을 입력해 주세요.";
-    private static final String MESSAGE_FOR_LOTTO_COUNT = "%d개를 구매 했습니다.%n";
     private static final String MESSAGE_FOR_WINNING_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
     private static final String MESSAGE_FOR_BONUS_LOTTO_NUMBER = "보너스 번호를 입력해 주세요.";
     private static final String SPLIT_DELIMITER = ", ";
-    private static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
+
 
 
     public static int scanInputMoney(){
@@ -27,19 +25,9 @@ public class InputView {
         }
 
     }
-
-    public static void printException(Exception exception){
-        System.out.println(ERROR_MESSAGE_PREFIX+exception.getMessage());
-    }
-    public static void printLottoCount(int count){
-        System.out.printf(MESSAGE_FOR_LOTTO_COUNT,count);
-    }
-
     public static List<Integer> scanWinningNumber() {
-        System.out.print(System.lineSeparator());
-        System.out.println(MESSAGE_FOR_WINNING_LOTTO_NUMBER);
+        System.out.println(System.lineSeparator()+MESSAGE_FOR_WINNING_LOTTO_NUMBER);
         String userInput = SCANNER.nextLine();
-
         try{
             return Arrays.stream(userInput.split(SPLIT_DELIMITER))
                     .map(Integer::parseInt)
@@ -57,18 +45,5 @@ public class InputView {
         } catch (NumberFormatException exception){
             throw new IllegalArgumentException(MESSAGE_FOR_INVALID_NUMBER);
         }
-    }
-    public static void printLottos(List<LottoDTO> lottoDTOs){
-        for(LottoDTO lottoDTO :lottoDTOs){
-            printSingleLotto(lottoDTO);
-        }
-    }
-    public static void printSingleLotto(LottoDTO lottoDTO){
-        System.out.println("["+joinNumbers(lottoDTO.getLottoNumbers()));
-    }
-    private static String joinNumbers(List<Integer> numbers){
-        return numbers.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining(SPLIT_DELIMITER));
     }
 }
