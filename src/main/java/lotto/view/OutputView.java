@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
-    private static final String ERROR_MESSAGE_PREFIX = "[ERROR} ";
+    private static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
     private static final String OPEN_BRACKET = "[";
     private static final String CLOSE_BRACKET = "]";
     private static final String JOIN_DELIMITER = ", ";

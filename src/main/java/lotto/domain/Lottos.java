@@ -26,6 +26,6 @@ public class Lottos {
     }
     private Set<Integer> generateLottoNumbers(RandomLottoNumbersGenerate randomLottoNumbersGenerate){
         return new HashSet<>(randomLottoNumbersGenerate.generateLottoNumber());
-
     }
+
 }
