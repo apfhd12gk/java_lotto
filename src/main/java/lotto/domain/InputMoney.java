@@ -6,7 +6,6 @@ public class InputMoney {
     private static final String ERROR_MESSAGE_FOR_MINIMUM_INPUT_MONEY = "1000원 보다 작은 금액을 입력할 수 없습니다.";
     private static final String ERROR_MESSAGE_FOR_MULTIPLE_OF_UNIT = "1000원으로 나누어 떨어지지 않는 금액을 입력할 수 없습니다.";
     private static final int MINIMUM_INPUT_MONEY = 1000;
-    private static final int INPUT_MONEY_UNIT = 1000;
     private static final int REMAIN = 0;
 
     private final int money;
@@ -20,8 +19,9 @@ public class InputMoney {
             throw new IllegalArgumentException(ERROR_MESSAGE_FOR_MINIMUM_INPUT_MONEY);
         }
     }
-    private void validateMultiple(int money){
-        if(money % INPUT_MONEY_UNIT != REMAIN){
+    private void validateMultiple(int money) {
+        boolean isDivided = money % Lotto.SINGLE_LOTTO_PRICE != REMAIN;
+        if(isDivided){
             throw new IllegalArgumentException(ERROR_MESSAGE_FOR_MULTIPLE_OF_UNIT);
         }
     }
