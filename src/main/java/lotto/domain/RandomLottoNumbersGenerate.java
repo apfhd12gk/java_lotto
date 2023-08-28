@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
+import java.util.Set;
 
 public class RandomLottoNumbersGenerate {
     private static final int MINIMUM_LOTTO_NUMBER = 1;
@@ -10,9 +11,9 @@ public class RandomLottoNumbersGenerate {
     private static final  int LOTTO_SIZE = 6;
 
 //    private static List<Integer> lottoNumber = new ArrayList<>();
-    public List<Integer> generateLottoNumber(){
+    public Set<Integer> generateLottoNumber(){
 //        List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTO_NUMBER,MAXIMUM_LOTTO_NUMBER,LOTTO_NUMBER_INDEX);
-        return Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTO_NUMBER,MAXIMUM_LOTTO_NUMBER, LOTTO_SIZE);
+        return (Set<Integer>) Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTO_NUMBER,MAXIMUM_LOTTO_NUMBER, LOTTO_SIZE);
     }
 
 }
