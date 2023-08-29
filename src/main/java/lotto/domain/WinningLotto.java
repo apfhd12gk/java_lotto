@@ -17,17 +17,10 @@ public class WinningLotto {
             throw new IllegalArgumentException(ERROR_MESSAGE_FOR_DUPLICATE_BONUS_NUMBER);
         }
     }
-
-    public Rank getRankByLotto(Lotto otherLotto){
-        int sameNumberCount = lotto.getSameNumberCount(otherLotto);
-
-        if(sameNumberCount == 5 && otherLotto.containsLottoNumber(bonusNumber)){
-            return Rank.SECOND;
-        }
-        if(sameNumberCount == 5 && !otherLotto.containsLottoNumber(bonusNumber)){
-            return Rank.THIRD;
-        }
-
-        return Rank.of(sameNumberCount);
+    public Lotto getLotto(){
+        return lotto;
+    }
+    public int getBonusNumber(){
+        return bonusNumber;
     }
 }

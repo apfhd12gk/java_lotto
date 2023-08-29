@@ -4,7 +4,7 @@ import lotto.constants.LottoConstants;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.*;
@@ -15,7 +15,7 @@ class RandomLottoConstantsGenerateTest {
     void randomLottoNumberGenerateTest(){
         IntStream.range(0,1000)
                 .forEach(i->{
-                    List<Integer> generateLottoNumbers = new RandomLottoNumbersGenerate().generateLottoNumber();
+                    Set<Integer> generateLottoNumbers = new RandomLottoNumbersGenerate().generateLottoNumber();
                     assertThat(LottoConstants.LOTTO_NUMBERS.containsAll(generateLottoNumbers)).isTrue();
                 });
     }
