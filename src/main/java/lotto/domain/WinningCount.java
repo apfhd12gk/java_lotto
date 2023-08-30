@@ -3,8 +3,8 @@ package lotto.domain;
 import java.util.Objects;
 
 public class WinningCount {
-    private final int POSITIVE_CRITERIA = 0;
-    private final String ERROR_MESSAGE_FOR_NEGATIVE_OR_ZERO_NUMBER = "당첨 횟수는 0이상 이어야 합니다.";
+    static final String ERROR_MESSAGE_FOR_NEGATIVE_OR_ZERO_NUMBER = "당첨 횟수는 0이상 이어야 합니다.";
+    private static final int POSITIVE_CRITERIA = 0;
     private final int count;
 
     public int getCount(){
